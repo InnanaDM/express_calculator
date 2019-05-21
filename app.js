@@ -1,3 +1,4 @@
+// Dependencies
 var express = require("express");
 
 // Set the port of our application
@@ -8,46 +9,34 @@ var PORT = process.env.PORT || 8080;
 var app = express();
 
 // Routes
-// What routes do you need to have? Which ones are optional?
-// TODO Add your routes here
-app.get("/:operation/:firstNum/:secondNum, function(req, res) {
+app.get("/:operation/:firstNum/:secondNum", function(req, res) {
 
-    var operation = req.params.operation;
-  // TODO parse out the variables from the request
-  var firstNum = parseInt(req.params.firstNum);
   // Parameters are received from the URL
-  // TODO make sure they're converted to integers (and not strings)
+  var operation = req.params.operation;
+
+  var firstNum = parseInt(req.params.firstNum);
   var secondNum = parseInt(req.params.secondNum);
-  // Parameters are converted to integers
-
-  // Initialize the result variable to send later
   var result;
-  // Switch statement chooses operation based on the operation parameter.
+
+  
   switch (operation) {
-  // BONUS - How could you use * + etc. inside the app.get()?
   case "add":
-
   case "+":
-
-  // Add your logic here. Pun intended.
-  result = firstNum + secondNum;
-
+    result = firstNum + secondNum;
     break;
   case "subtract":
-    // Subtract logic
-    case "-":
+  case "-": 
     result = firstNum - secondNum;
     break;
   case "multiply":
-  case "*":
-    // Multiply
+  case "*": 
     result = firstNum * secondNum;
     break;
   case "divide":
-    // Divide
+  case "/": 
+    result = firstNum / secondNum;
     break;
   default:
-    // Handle anything that isn't specified
     result =
         "Sorry! The only valid operations are add, subtract, multiply, and divide.";
   }
